@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 //Add required annotations
-
+@RestController
 public class BookController {
 
 
+    @Autowired
+    BookService bookService;
     //Write createBook API with required annotations
 
     //Add required annotations
@@ -27,5 +29,11 @@ public class BookController {
 
         return new ResponseEntity<>(bookList, HttpStatus.OK);
 
+    }
+    @PostMapping("book")
+    public  ResponseEntity<String> createBook(@RequestBody Book book)
+    {
+        bookService.createBook(book);
+        return  new ResponseEntity<>("Sucess",HttpStatus.ACCEPTED);
     }
 }

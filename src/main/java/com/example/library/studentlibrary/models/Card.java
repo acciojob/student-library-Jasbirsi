@@ -1,14 +1,21 @@
 package com.example.library.studentlibrary.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
-
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@Data
 public class Card {
 
     @Id
@@ -32,7 +39,9 @@ public class Card {
     @JsonIgnoreProperties("card")
     private List<Book> books;
 
-    public Card(){
+    public Card()
+    {
         this.cardStatus = CardStatus.ACTIVATED;
+
     }
 }
